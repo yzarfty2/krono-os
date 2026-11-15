@@ -693,7 +693,7 @@ export default function App() {
                     setNewFixedName(''); setNewFixedAmount('');
                   }} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <input type="text" placeholder="שם ההוצאה הקבועה..." value={newFixedName} onChange={(e) => setNewFixedName(e.target.value)} style={inputStyle} required />
-                    <input type="number" placeholder="סכום חודשי (₪)" value={newFixedAmount} onChange={(e) => setNewFixedAmount(e.target.value)} style={inputStyle, { padding: '10px 12px', borderRadius: '8px', border: '1px solid #333', backgroundColor: '#1a1a1a', color: '#fff', fontSize: '12px', fontFamily: "'Lora', serif", outline: 'none' }} required />
+                    <input type="number" placeholder="סכום חודשי (₪)" value={newFixedAmount} onChange={(e) => setNewFixedAmount(e.target.value)} style={inputStyle} required />
                     <select value={newFixedCategory} onChange={(e) => setNewFixedCategory(e.target.value)} style={{ ...inputStyle, cursor: 'pointer' }}>
                       {categoriesList.map((cat, idx) => <option key={idx} value={cat} style={{ background: '#1a1a1a', color: '#fff' }}>{cat}</option>)}
                     </select>
