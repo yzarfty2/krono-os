@@ -125,12 +125,6 @@ export default function App() {
   const totalDaily = dailyExpenses.reduce((sum, item) => sum + item.amount, 0);
   const totalAllExpenses = totalFixed + totalDaily;
   const netBalance = monthlyIncome - totalAllExpenses;
-  const allExpensesCombined = [...fixedExpenses, ...dailyExpenses];
-  const categoryTotals = categoriesList.reduce((acc, cat) => {
-    acc[cat] = allExpensesCombined.filter(item => item.category === cat).reduce((sum, item) => sum + item.amount, 0);
-    return acc;
-  }, {});
-  const highestCategory = Object.keys(categoryTotals).reduce((max, cat) => categoryTotals[cat] > categoryTotals[max] ? cat : max, categoriesList[0]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -699,7 +693,7 @@ export default function App() {
                     setNewFixedName(''); setNewFixedAmount('');
                   }} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     <input type="text" placeholder="שם ההוצאה הקבועה..." value={newFixedName} onChange={(e) => setNewFixedName(e.target.value)} style={inputStyle} required />
-                    <input type="number" placeholder="סכום חודשי (₪)" value={newFixedAmount} onChange={(e) => setNewFixedAmount(e.target.value)} style={inputStyle} required />
+                    <input type="number" placeholder="סכום חודשי (₪)" value={newFixedAmount} onChange={(e) => setNewFixedAmount(e.target.value)} style={inputStyle, { padding: '10px 12px', borderRadius: '8px', border: '1px solid #333', backgroundColor: '#1a1a1a', color: '#fff', fontSize: '12px', fontFamily: "'Lora', serif", outline: 'none' }} required />
                     <select value={newFixedCategory} onChange={(e) => setNewFixedCategory(e.target.value)} style={{ ...inputStyle, cursor: 'pointer' }}>
                       {categoriesList.map((cat, idx) => <option key={idx} value={cat} style={{ background: '#1a1a1a', color: '#fff' }}>{cat}</option>)}
                     </select>
@@ -732,7 +726,7 @@ export default function App() {
                   ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '250px', overflowY: 'auto' }}>
                       {dailyExpenses.map((item) => (
-                        <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 12px', background: '#1a1a1a', borderRadius: '8px', border: '1px solid #262626' }}>
+                        <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 14px', background: '#1a1a1a', borderRadius: '8px', border: '1px solid #262626' }}>
                           <div><span style={{ fontSize: '13px', color: '#fff' }}>{item.name}</span><span style={{ fontSize: '10px', color: '#888', display: 'block' }}>{item.category}</span></div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <span style={{ fontSize: '13px', fontWeight: '600', color: '#ea4335' }}>-₪{item.amount}</span>
